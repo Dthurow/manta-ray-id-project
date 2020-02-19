@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" </meta> 
+  <title>Manta Ray ID Project</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,400,600" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav>
+      <div class="container-lg">
+        <div class="logo">
+          <img src="images/logo-manta-ray.png" alt="">
+          <h2>Manta Ray Identification Project</h2>
+        </div>
+        <div class="nav-options">
+          <a href="#sighting" rel="modal:open">
+            <h3>Report a Sighting</h3>
+          </a>
+          <a href="#">
+            <h3 class="active"> Catalog</h3>
+          </a>
+          <a href="#about" rel="modal:open">
+            <h3>About</h3>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+
+    <div id="about" class="modal" style="background-color:var(--color-background)">
+      <div class="detail-window">
+        <img src="https://cdn.glitch.com/15a278cb-a93b-4278-aaba-57ef2b514c28%2Flogo-manta-ray.png?v=1582125626312" alt="Manta Pacific Research Foundation Logo" class="image-responsive">
+        
+        <div class="detail-window-body" style="margin-top:10px;">
+          <p>
+         The manta identification project started in 1991 by Keller Laros, founder of Manta Pacific Research Foundation. 
+         Each manta ray has a unique spot pattern on its ventral side.  These spot patterns can be used to accurately identify individuals.
+         The first manta ray ever identified was Lefty.  
+         She has a broken left cepahlic fin so she is easy to differentiate from the others, but Lefty also has a spot pattern on her abdomen 
+         that is unique to her.   Manta Pacfic Research Foundation maintains an ID Catalog of mantas in Kona and Hawaii.
+         </p>
+        </div>
+     </div>
+     
+   </div>
+
+    <div id="sighting" class="modal">
+      <div class="detail-window">
+        <img src="images/logo-manta-ray.png" alt="">
+        <h1 style="color: var(--color-background)">Form for reporting a sighting</h1>
+      </div>
+    </div>
+    
+    <div class="title-bar">
+      <div class="container-lg">
+        <h1>Kona Population</h1>
+        <div class="search-field">
+          <input type="text" class="quicksearch" placeholder="Search" />
+          <button class="button" onclick="alert('not done :(')">Go</button>
+        </div>
+      </div>
+    </div>
+    
+    <div id="app">
+
+      <!--in-depth pop up-->
+      <div v-if="mantaDetail != null" id="element-item-detail" class="modal" style="background-color:var(--color-background)">
+        <div class="detail-window">
+          <div class="detail-window-header">
+            <h1>{{mantaDetail.Name}}</h1>
+          </div>
+          <div class="detail-window-body">
+            <h3>About</h3>
+            <div class="">
+              <h3>Species: {{speciesDict[mantaDetail.Species]}}</h3>
+              <h3>Sex: {{sexDict[mantaDetail.Sex]}}</h3>
+            </div>
+            <div class="">
+              <p>ID Number: {{mantaDetail.MPRFWebsiteNumber}}</p>
+              <p>First Sighting: {{mantaDetail.DateAdded}}</p>
+            </div>
+            <p>Comments:<br/>
+              {{mantaDetail.Comments}}</p>
+          </div>
+          <img v-bind:src="mantaDetail.ImagePath" alt="" class="image-responsive">
+        </div>
+      </div>
+
+
+
+      <!--Filter header bar -->
+      <section class="filter-sort-bar">
+        <div class="container-lg">
+          <div class=filters>
+            <div class="ui-group">
+              <p>Species</p>
+              <div class="button-group js-radio-button-group" data-filter-group="species">
+                <button class="button is-checked" v-on:click="FilterBySpecies('')">Any</button>
+                <button class="button" v-on:click="FilterBySpecies('B')">birostris (pelagic)</button>
+                <button class="button" v-on:click="FilterBySpecies('A')">alfredi (reef)</button>
+              </div>
+            </div>
+            <div class="ui-group">
+              <p>Sex</p>
+              <div class="button-group js-radio-button-group" data-filter-group="sex">
+                <button class="button is-checked" v-on:click="FilterBySex('')">Any</button>
+                <button class="button" v-on:click="FilterBySex('M')" >Male</button>
+                <button class="button" v-on:click="FilterBySex('F')">Female</button>
+              </div>
+            </div>
+            <div class="ui-group">
+              <p>Coloring</p>
+              <div class="button-group js-radio-button-group" data-filter-group="size">
+                <button class="button is-checked" v-on:click="FilterByColor('')">Any</button>
+                <button class="button" v-on:click="FilterByColor('1')">Black</button>
+                <button class="button" v-on:click="FilterByColor('0')">Light</button>
+              </div>
+            </div>
+          </div>
+          <div class="sorters">
+            <div class="ui-group">
+              <p>Sort</p>
+              <div class="button-group sort-by-button-group sort" data-filter-group="sort">
+                <button class="button is-checked" onclick="alert('not done :(')">A-Z</button>
+                <button class="button" onclick="alert('not done :(')">Recently Added</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="grid thumbnails">
+        <div v-for="mantaray in mantarays" v-bind:key="mantaray._mantaID"
+          v-bind:class="GetGridItemClasses(mantaray)"
+          >
+          <a href="#element-item-detail" rel="modal:open" v-on:click="SetDetail(mantaray)">
+            <div class="thumb-image">
+              <img v-bind:src="mantaray.ImagePath == null ? 'images/loading_symbol.gif' : mantaray.ImagePath" alt="" class="portrait">
+            </div>
+            <div class="thumb-detail">
+              <div>
+                <h3 class="name">{{mantaray.Name}}</h3>
+                <h5>Species: {{speciesDict[mantaray.Species]}}</h5>
+                <h5>Sex: {{sexDict[mantaray.Sex]}}</h5>
+                <h5>Coloring: {{mantaray.BlackMorph === '0' ? 'Light' : 'Black'}}</h5>
+              </div>
+              <p class="number">{{mantaray.MPRFWebsiteNumber}}</p>
+            </div>
+          </a>
+
+        </div>
+      </section>
+  
+  
+    </div>
+
+    
+  </div>
+
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="site.js"></script>
+</body>
+
+</html>
