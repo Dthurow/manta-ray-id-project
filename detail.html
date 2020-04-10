@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Manta Ray ID Project - Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,400,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav>
+            <div class="container-lg">
+                <div class="logo">
+                    <img src="images/logo-manta-ray.png" alt="">
+                    <h2>Manta Ray Identification Project</h2>
+                </div>
+                <div class="nav-options">
+                    <a href="#sighting" rel="modal:open">
+                        <h3>Report a Sighting</h3>
+                    </a>
+                    <a href="index.html">
+                        <h3 > Catalog</h3>
+                    </a>
+                    <a href="#about" rel="modal:open">
+                        <h3>About</h3>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+
+        <div id="about" class="modal" style="background-color:var(--color-background)">
+            <div class="detail-window">
+                <img src="images/logo-manta-ray.png"
+                    alt="Manta Pacific Research Foundation Logo" class="image-responsive">
+
+                <div class="detail-window-body" style="margin-top:10px;">
+                    <p>
+                        The manta identification project started in 1991 by Keller Laros, founder of Manta Pacific
+                        Research Foundation.
+                        Each manta ray has a unique spot pattern on its ventral side. These spot patterns can be used to
+                        accurately identify individuals.
+                        The first manta ray ever identified was Lefty.
+                        She has a broken left cepahlic fin so she is easy to differentiate from the others, but Lefty
+                        also has a spot pattern on her abdomen
+                        that is unique to her. Manta Pacfic Research Foundation maintains an ID Catalog of mantas in
+                        Kona and Hawaii.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="sighting" class="modal">
+            <div class="detail-window">
+                <img src="images/logo-manta-ray.png" alt="">
+                <h1 style="color: var(--color-background)">Form for reporting a sighting</h1>
+            </div>
+        </div>
+
+
+
+        <div id="app">
+            <div class="title-bar">
+                <div class="container-lg">
+                    <h1>{{manta.Name}}</h1>
+                </div>
+            </div>
+            <div class="detail container-lg">
+                <div >
+                    <h3>Species: {{speciesDict[manta.Species]}}</h3>
+                    <h3>Sex: {{sexDict[manta.Sex]}}</h3>
+                </div>
+                <div >
+                    <p>ID Number: {{manta.MPRFWebsiteNumber}}</p>
+                    <p>First Sighting: {{manta.DateAdded}}</p>
+                    <p>First Sighted by: {{manta.UserName}}</p>
+                    <p>First size: {{manta.lowerRange ? manta.lowerRange + " feet" : "Unknown"}}</p>
+                    <p>Current size: {{manta.upperRange ? manta.upperRange + " feet" : "Unknown"}}</p>
+                </div>
+                <p>Comments:<br />
+                    {{manta.Comments}}</p>
+                <img v-bind:src="manta.ImagePath" alt="" class="image-responsive">
+                <p class="image-tag" v-if="manta.ImageCredit">Photo by: {{manta.ImageCredit}}</p>
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="detail.js"></script>
+</body>
+
+</html>

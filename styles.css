@@ -83,6 +83,10 @@ html, body {
   max-width: 100%;
   margin: 0 auto;
 }
+.image-tag{
+  text-align:center;
+  padding-top:10px;
+}
 
 .container-lg {
   max-width: 1120px;
@@ -272,6 +276,14 @@ nav a h3 {
   content:'ID# '
 }
 
+.detail
+{
+  background-color: var(--color-trans);
+  border-radius: 6px;
+  padding: 15px;
+  margin-top:20px;
+}
+
 
 /* _____________________________________Isotope test */
 
@@ -328,6 +340,10 @@ nav a h3 {
 
 .button-group .button:first-child { border-radius: 4px 0 0 4px; }
 .button-group .button:last-child { border-radius: 0 4px 4px 0; }
+
+.single-button{
+  border-radius:4px;
+}
 
 /* ---- isotope ---- */
 

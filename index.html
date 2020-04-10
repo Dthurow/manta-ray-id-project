@@ -34,7 +34,7 @@
 
     <div id="about" class="modal" style="background-color:var(--color-background)">
       <div class="detail-window">
-        <img src="https://cdn.glitch.com/15a278cb-a93b-4278-aaba-57ef2b514c28%2Flogo-manta-ray.png?v=1582125626312" alt="Manta Pacific Research Foundation Logo" class="image-responsive">
+        <img src="images/logo-manta-ray.png" alt="Manta Pacific Research Foundation Logo" class="image-responsive">
         
         <div class="detail-window-body" style="margin-top:10px;">
           <p>
@@ -61,7 +61,7 @@
         <h1>Kona Population</h1>
         <div class="search-field">
           <input type="text" class="quicksearch" placeholder="Search" />
-          <button class="button" onclick="alert('not done :(')">Go</button>
+          <button class="button single-button" onclick="alert('not done :(')">Go</button>
         </div>
       </div>
     </div>
@@ -87,7 +87,14 @@
             <p>Comments:<br/>
               {{mantaDetail.Comments}}</p>
           </div>
+          <div class="image-tag">
+            <a class="button single-button" v-bind:href="'detail.html?id=' + mantaDetail.MPRFWebsiteNumber">View Details</a>          
+  
+          </div>
           <img v-bind:src="mantaDetail.ImagePath" alt="" class="image-responsive">
+        </br>
+        
+
         </div>
       </div>
 
