@@ -3,8 +3,10 @@ var app = new Vue({
     el: '#app',
     data: {
         uri: "https://www.mantarays.info/mantaraysapp/vtest/manta-server.php?p=2&m=",
-        imageURI: "https://www.mantarays.info/mantaraysapp/vtest/photo-server.php?p=",
+        imageURI: "https://www.mantarays.info/mantaraysapp/vtest/photo-server.php?m=",
+        imageSrc: "https://www.mantarays.info/MantaDatabaseImages/",
         manta: {},
+        slideIndex: 1,
         sexDict: {
             "F": "Female",
             "M": "Male",
@@ -40,22 +42,48 @@ var app = new Vue({
         },
         GetImagePath: function (mantaray)
         {
-            fetch(this.imageURI + mantaray.BestVentralPhoto)
-            .then(response => response.json())
-            .then(data =>
-            {
-                if (data.errors.code === "0" && data.data.length > 0)
+            fetch(this.imageURI + mantaray._mantaID)
+                .then(response => response.json())
+                .then(data =>
                 {
-                    //valid response, set using vue.set to trigger DOM update
-                    Vue.set(mantaray, 'ImagePath', "https://www.mantarays.info/MantaDatabaseImages/" + data.data[0].Path);
-                    Vue.set(mantaray, "ImageCredit", data.data[0].PhotoCredit);
-                    
-                }
+                    if (data.errors.code === "0" && data.data.length > 0)
+                    {
+                        console.log("images");
+                        console.log(data.data);
+                        //valid response, set using vue.set to trigger DOM update
+                        Vue.set(mantaray, 'images', data.data);
+                    }
 
-            })
-            .catch(error => console.error("Unable to get manta rays.", error));
-            
+                })
+                .catch(error => console.error("Unable to get manta rays.", error));
 
+
+        },
+        plusSlides: function (n)
+        {
+            this.showSlides(this.slideIndex += n);
+        },
+        currentSlide: function (n)
+        {
+            this.showSlides(this.slideIndex = n);
+        },
+        showSlides: function (n)
+        {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { this.slideIndex = 1 }
+            if (n < 1) { this.slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++)
+            {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++)
+            {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[this.slideIndex - 1].style.display = "block";
+            dots[this.slideIndex - 1].className += " active";
         }
 
     },

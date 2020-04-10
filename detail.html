@@ -23,7 +23,7 @@
                         <h3>Report a Sighting</h3>
                     </a>
                     <a href="index.html">
-                        <h3 > Catalog</h3>
+                        <h3> Catalog</h3>
                     </a>
                     <a href="#about" rel="modal:open">
                         <h3>About</h3>
@@ -35,8 +35,8 @@
 
         <div id="about" class="modal" style="background-color:var(--color-background)">
             <div class="detail-window">
-                <img src="images/logo-manta-ray.png"
-                    alt="Manta Pacific Research Foundation Logo" class="image-responsive">
+                <img src="images/logo-manta-ray.png" alt="Manta Pacific Research Foundation Logo"
+                    class="image-responsive">
 
                 <div class="detail-window-body" style="margin-top:10px;">
                     <p>
@@ -71,11 +71,11 @@
                 </div>
             </div>
             <div class="detail container-lg">
-                <div >
+                <div>
                     <h3>Species: {{speciesDict[manta.Species]}}</h3>
                     <h3>Sex: {{sexDict[manta.Sex]}}</h3>
                 </div>
-                <div >
+                <div>
                     <p>ID Number: {{manta.MPRFWebsiteNumber}}</p>
                     <p>First Sighting: {{manta.DateAdded}}</p>
                     <p>First Sighted by: {{manta.UserName}}</p>
@@ -84,8 +84,32 @@
                 </div>
                 <p>Comments:<br />
                     {{manta.Comments}}</p>
-                <img v-bind:src="manta.ImagePath" alt="" class="image-responsive">
-                <p class="image-tag" v-if="manta.ImageCredit">Photo by: {{manta.ImageCredit}}</p>
+
+
+                <!-- Slideshow container -->
+                <div class="slideshow-container">
+
+                    <!-- Full-width images with number and caption text -->
+                    <div v-for="(image, index) in manta.images" v-bind:key="image._photoID" class="mySlides fade">
+                        <div class="numbertext">{{index + 1}} / {{manta.images.length}}</div>
+                        <a v-bind:href="imageSrc + image.Path" target="_blank">
+                            <img v-on:load="showSlides(1)" class="image-responsive" v-bind:src="imageSrc + image.Path" >
+                        </a>
+                        
+                        <div class="text">Photo by {{image.PhotoCredit}}, taken {{image.DateTaken}}</div>
+                    </div>
+
+
+                    <!-- Next and previous buttons -->
+                    <a class="prev" v-on:click="plusSlides(-1)">&#10094;</a>
+                    <a class="next" v-on:click="plusSlides(1)">&#10095;</a>
+                </div>
+                <br>
+
+                <!-- The dots/circles -->
+                <div style="text-align:center">
+                    <span v-for="(image, index) in manta.images" v-bind:key="image._photoID" class="dot" v-on:click="currentSlide(index+1)"></span>
+                </div>
             </div>
 
         </div>
