@@ -79,8 +79,9 @@
                     <p>ID Number: {{manta.MPRFWebsiteNumber}}</p>
                     <p>First Sighting: {{manta.DateAdded}}</p>
                     <p>First Sighted by: {{manta.UserName}}</p>
-                    <p>First size: {{manta.lowerRange ? manta.lowerRange + " feet" : "Unknown"}}</p>
-                    <p>Current size: {{manta.upperRange ? manta.upperRange + " feet" : "Unknown"}}</p>
+                    <p>First size: {{manta.lowerRange && manta.upperRange ? 
+                        "~" + manta.lowerRange + "-" + manta.upperRange + " feet" : "Uknown"}}</p>
+                    <p>Current size:</p>
                 </div>
                 <p>Comments:<br />
                     {{manta.Comments}}</p>

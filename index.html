@@ -56,19 +56,21 @@
       </div>
     </div>
     
-    <div class="title-bar">
-      <div class="container-lg">
-        <h1>Kona Population</h1>
-        <div class="search-field">
-          <input type="text" class="quicksearch" placeholder="Search" />
-          <button class="button single-button" onclick="alert('not done :(')">Go</button>
-        </div>
-      </div>
-    </div>
-    
+
     <div id="app">
 
-      <!--in-depth pop up-->
+  
+      <div class="title-bar">
+        <div class="container-lg">
+          <h1>Kona Population</h1>
+          <div class="search-field">
+            <input type="text" class="quicksearch" v-model="searchTerm" v-on:keydown.enter="FilterByName()" placeholder="Search" />
+            <button class="button single-button" v-on:click="FilterByName()">Go</button>
+         </div>
+        </div>
+      </div>
+    
+          <!--in-depth pop up-->
       <div v-if="mantaDetail != null" id="element-item-detail" class="modal" style="background-color:var(--color-background)">
         <div class="detail-window">
           <div class="detail-window-header">
@@ -133,8 +135,9 @@
             <div class="ui-group">
               <p>Sort</p>
               <div class="button-group sort-by-button-group sort" data-filter-group="sort">
-                <button class="button is-checked" onclick="alert('not done :(')">A-Z</button>
-                <button class="button" onclick="alert('not done :(')">Recently Added</button>
+                <button class="button is-checked" v-on:click="SortByNumber('')">ID#s</button>
+                <button class="button" v-on:click="SortByName('')">A-Z</button>
+                <button class="button" v-on:click="ReverseOrder('')">Reverse</button>
               </div>
             </div>
           </div>
