@@ -5,7 +5,10 @@ var app = new Vue({
         uri: "https://www.mantarays.info/mantaraysapp/vtest/manta-server.php?p=2&m=",
         imageURI: "https://www.mantarays.info/mantaraysapp/vtest/photo-server.php?m=",
         imageSrc: "https://www.mantarays.info/MantaDatabaseImages/",
+        sightingsURI: "https://www.mantarays.info/mantaraysapp/vtest/sighting-server.php?m=",
+        sightingsDate: "2019-01-01",
         manta: {},
+        sightings: [],
         slideIndex: 1,
         sexDict: {
             "F": "Female",
@@ -24,6 +27,8 @@ var app = new Vue({
             let params = new URLSearchParams(document.location.search.substring(1));
             let id = params.get("id");
             console.log(id);
+
+            //fetch manta details
             fetch(this.uri + id)
                 .then(response => response.json())
                 .then(data =>
@@ -39,6 +44,24 @@ var app = new Vue({
 
                 })
                 .catch(error => console.error("Unable to get manta rays.", error));
+            
+                //fetch manta sightings info
+                fetch(this.sightingsURI + id + "&d=" + this.sightingsDate)
+                .then(response => response.json())
+                .then(data =>
+                {
+                    if (data.errors.code === "0")
+                    {
+                        console.log(data.data);
+                        //valid response, sort by start date, most recent first
+                        this.sightings = data.data.sort(function(a,b){
+                            return new Date(b.StartDateTime) - new Date(a.StartDateTime);
+                          });
+                    }
+
+                })
+                .catch(error => console.error("Unable to get manta rays.", error));
+
         },
         GetImagePath: function (mantaray)
         {
