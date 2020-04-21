@@ -23,6 +23,7 @@ var app = new Vue({
     },
     computed: {
         firstSize: function () {
+            console.log("lowerRange " + this.manta.lowerRange);
             if (this.manta.lowerRange && this.manta.upperRange) {
                 if (this.manta.lowerRange == this.manta.upperRange) {
                     return "~" + manta.lowerRange + " feet";
