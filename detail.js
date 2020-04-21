@@ -21,6 +21,19 @@ var app = new Vue({
         },
 
     },
+    computed: {
+        firstSize: function () {
+            if (this.manta.lowerRange && this.manta.upperRange) {
+                if (this.manta.lowerRange == this.manta.upperRange) {
+                    return "~" + manta.lowerRange + " feet";
+                } else {
+                    return "~" + manta.lowerRange + "-" + manta.upperRange + " feet";                  
+                }
+            } else {
+                return "Unknown";
+            }
+        }
+    },
     methods: {
         GetContent: function ()
         {
