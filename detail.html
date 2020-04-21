@@ -86,25 +86,6 @@
                     {{manta.Comments}}</p>
 
 
-                <div v-if="sightings && sightings.length > 0">
-                    <h2>{{sightings.length}} Recent Sightings</h2>
-
-                    <section class="grid sightings">
-                        <div class="sighting" v-for="sighting in sightings" v-bind:key="sighting._excursionID">
-                            <div class="sighting-detail">
-                                <div>
-                                    <h3 class="name">Date: {{sighting.StartDateTime}}</h3>
-                                    <h3>Location: {{sighting.PlaceName}}, {{sighting.Region}}</h3>
-                                    <h3>Lat/Long: N {{sighting.LocLat}} W {{sighting.LocLong}}</h3>
-                                    <h3>Sighted By: {{sighting.Name}}</h3>
-                                </div>
-                            </div>
-
-                        </div>
-                    </section>
-
-                </div>
-
 
                 <!-- Slideshow container -->
                 <div>
@@ -134,6 +115,26 @@
                         <span v-for="(image, index) in manta.images" v-bind:key="image._photoID" class="dot"
                             v-on:click="currentSlide(index+1)"></span>
                     </div>
+                </div>
+
+
+                <div v-if="sightings && sightings.length > 0">
+                    <h2>{{sightings.length}} Recent Sightings since {{sightingsDate}}</h2>
+
+                    <section class="grid sightings">
+                        <div class="sighting" v-for="sighting in sightings" v-bind:key="sighting._excursionID">
+                            <div class="sighting-detail">
+                                <div>
+                                    <h3 class="name">Date: {{sighting.StartDateTime}}</h3>
+                                    <h3>Location: {{sighting.PlaceName}}, {{sighting.Region}}</h3>
+                                    <h3>Lat/Long: N {{sighting.LocLat}} W {{sighting.LocLong}}</h3>
+                                    <h3>Sighted By: {{sighting.Name}}</h3>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+
                 </div>
 
 
