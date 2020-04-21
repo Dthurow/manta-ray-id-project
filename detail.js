@@ -23,12 +23,12 @@ var app = new Vue({
     },
     computed: {
         firstSize: function () {
-            console.log("lowerRange " + this.manta.lowerRange);
+            console.log("firstSize: lowerRange " + this.manta.lowerRange);
             if (this.manta.lowerRange && this.manta.upperRange) {
                 if (this.manta.lowerRange == this.manta.upperRange) {
-                    return "~" + manta.lowerRange + " feet";
+                    return "~" + this.manta.lowerRange + " feet";
                 } else {
-                    return "~" + manta.lowerRange + "-" + manta.upperRange + " feet";                  
+                    return "~" + this.manta.lowerRange + "-" + this.manta.upperRange + " feet";                  
                 }
             } else {
                 return "Unknown";
