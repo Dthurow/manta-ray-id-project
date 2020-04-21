@@ -19,6 +19,10 @@ var app = new Vue({
             "A": "Alfredi (reef)",
             "B": "Birostris (pelagic)"
         },
+        colorDict: {
+            "0": "Light",
+            "1": "Black"
+        },
 
     },
     computed: {
@@ -44,8 +48,9 @@ var app = new Vue({
         currentSize: function ()
         {
             if (this.manta.Deceased === "1")
-                return "";
+                return "Deceased";
             else
+                return "";
         }
     },
     methods: {
