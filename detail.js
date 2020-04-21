@@ -22,19 +22,30 @@ var app = new Vue({
 
     },
     computed: {
-        firstSize: function () {
+        firstSize: function ()
+        {
             if (this.manta.lowerRange && this.manta.upperRange) {
+                var tempString;
                 if (this.manta.lowerRange == this.manta.upperRange) {
                     // return "~" + this.manta.lowerRange + " feet";
                     tempString = "~" + this.manta.lowerRange + " feet";
 
              } else {
                     // return "~" + this.manta.lowerRange + "-" + this.manta.upperRange + " feet";                  
-                    return "~" + this.manta.lowerRange + "-" + this.manta.upperRange + " feet";                  
-                }
+                    tempString = "~" + this.manta.lowerRange + "-" + this.manta.upperRange + " feet";                  
+              }
+              if (this.manta.PupInitially === "1")
+                  tempString = tempString + " (pup)";
+              return tempString;
             } else {
                 return "Unknown";
             }
+        },
+        currentSize: function ()
+        {
+            if (this.manta.Deceased === "1")
+                return "";
+            else
         }
     },
     methods: {
