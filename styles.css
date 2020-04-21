@@ -3,52 +3,133 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 a {
-	text-decoration: none;
+  text-decoration: none;
   color: inherit;
 }
 
@@ -56,26 +137,26 @@ a {
 
 * {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   font-size: 10px;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   scroll-behavior: smooth;
   background-color: var(--color-background);
 }
 
-
 /* _____________________________________________________________________________Global styles */
 :root {
-  --color-light: #E1E9EC;
+  --color-light: #e1e9ec;
   --color-dark: #132943;
-  --color-contrast: #36A9B6;
-  --color-primary: #A4CDDB;
-  --color-background: #14202E;
+  --color-contrast: #36a9b6;
+  --color-primary: #a4cddb;
+  --color-background: #14202e;
   --color-trans: rgba(180, 188, 220, 0.1);
-  --color-white: #DDD;
+  --color-white: #ddd;
 }
 
 .image-responsive {
@@ -83,9 +164,9 @@ html, body {
   max-width: 100%;
   margin: 0 auto;
 }
-.image-tag{
-  text-align:center;
-  padding-top:10px;
+.image-tag {
+  text-align: center;
+  padding-top: 10px;
 }
 
 .container-lg {
@@ -99,7 +180,11 @@ html, body {
 }
 
 /* desktop typography styles */
-h1, h2, h3, p, h5 {
+h1,
+h2,
+h3,
+p,
+h5 {
   color: var(--color-light);
 }
 
@@ -160,7 +245,6 @@ nav a h3 {
 .nav-options {
   display: flex;
   align-items: center;
-
 }
 
 .title-bar {
@@ -179,7 +263,7 @@ nav a h3 {
   color: var(--color-background);
 }
 
-.search-field input{
+.search-field input {
   background-color: var(--color-light);
   border: none;
   border-radius: 4px;
@@ -246,9 +330,9 @@ nav a h3 {
   top: 50%;
   height: 100%;
   width: auto;
-  -webkit-transform: translate(-50%,-50%);
-      -ms-transform: translate(-50%,-50%);
-          transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 .thumb-image img.portrait {
   width: 100%;
@@ -273,17 +357,15 @@ nav a h3 {
 }
 
 .thumb-detail .number:before {
-  content:'ID# '
+  content: "ID# ";
 }
 
-.detail
-{
+.detail {
   background-color: var(--color-trans);
   border-radius: 6px;
   padding: 15px;
-  margin-top:20px;
+  margin-top: 20px;
 }
-
 
 /* _____________________________________Isotope test */
 
@@ -322,7 +404,7 @@ nav a h3 {
 /* ---- button-group ---- */
 
 .button-group:after {
-  content: '';
+  content: "";
   display: block;
   clear: both;
 }
@@ -338,26 +420,30 @@ nav a h3 {
   margin-left: 0;
 }
 
-.button-group .button:first-child { border-radius: 4px 0 0 4px; }
-.button-group .button:last-child { border-radius: 0 4px 4px 0; }
+.button-group .button:first-child {
+  border-radius: 4px 0 0 4px;
+}
+.button-group .button:last-child {
+  border-radius: 0 4px 4px 0;
+}
 
-.single-button{
-  border-radius:4px;
+.single-button {
+  border-radius: 4px;
 }
 
 /* ---- isotope ---- */
 
-
-
 /* clear fix */
 .thumbnails:after {
-  content: '';
+  content: "";
   display: block;
   clear: both;
 }
 
 /* Slideshow */
-* {box-sizing:border-box}
+* {
+  box-sizing: border-box;
+}
 
 /* Slideshow container */
 .slideshow-container {
@@ -372,7 +458,8 @@ nav a h3 {
 }
 
 /* Next & previous buttons */
-.prev, .next {
+.prev,
+.next {
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -394,8 +481,9 @@ nav a h3 {
 }
 
 /* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* Caption text */
@@ -428,7 +516,8 @@ nav a h3 {
   transition: background-color 0.6s ease;
 }
 
-.active, .dot:hover {
+.active,
+.dot:hover {
   background-color: #717171;
 }
 
@@ -441,11 +530,71 @@ nav a h3 {
 }
 
 @-webkit-keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.sightings {
+  display: grid;
+  max-width: 1120px;
+  grid-template-columns: repeat(auto-fit, 1100px);
+  margin: 10px auto;
+  max-height: 750px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding:5px;
+  margin-bottom:30px;
+}
+
+.sighting {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+.sighting-detail{
+  background-color: var(--color-trans);
+  margin-right:15px;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--color-trans);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-background);
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px grey;
 }

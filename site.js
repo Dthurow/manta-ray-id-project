@@ -4,6 +4,7 @@ var app = new Vue({
     data: {
         uri: "https://www.mantarays.info/mantaraysapp/vtest/manta-server.php?p=2&n=0",
         imageURI: "https://www.mantarays.info/mantaraysapp/vtest/photo-server.php?p=",
+        imageSrc: "https://www.mantarays.info/mantaraysapp/vtest/image-server.php?w=250&f=MantaDatabaseImages/",
         allMantarays: [],
         mantarays: [],
         searchTerm: null,
@@ -72,7 +73,7 @@ var app = new Vue({
                 if (data.errors.code === "0")
                 {
                     //valid response, set using vue.set to trigger DOM update
-                    Vue.set(mantaray, 'ImagePath', "https://www.mantarays.info/mantaraysapp/vtest/image-server.php?w=250&f=MantaDatabaseImages/" + data.data[0].Path);                    
+                    Vue.set(mantaray, 'ImagePath', this.imageSrc + data.data[0].Path);                    
                 }
 
             })
