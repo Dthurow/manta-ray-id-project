@@ -74,37 +74,18 @@
                 <div>
                     <h3>Species: {{speciesDict[manta.Species]}}</h3>
                     <h3>Sex: {{sexDict[manta.Sex]}}</h3>
+                    <h3>Color: {{colorDict[manta.BlackMorph]}}</h3>
                 </div>
                 <div>
                     <p>ID Number: {{manta.MPRFWebsiteNumber}}</p>
                     <p>First Sighting: {{manta.DateAdded}}</p>
                     <p>First Sighted by: {{manta.UserName}}</p>
-                    <p>First size: {{manta.lowerRange && manta.upperRange ? 
-                        "~" + manta.lowerRange + "-" + manta.upperRange + " feet" : "Uknown"}}</p>
-                    <p>Current size:</p>
+                    <p>First size: {{firstSize}}</p>
+                    <p>Current size: {{currentSize}}</p>
                 </div>
                 <p>Comments:<br />
                     {{manta.Comments}}</p>
 
-
-                <div v-if="sightings && sightings.length > 0">
-                    <h2>{{sightings.length}} Recent Sightings</h2>
-
-                    <section class="grid sightings">
-                        <div class="sighting" v-for="sighting in sightings" v-bind:key="sighting._excursionID">
-                            <div class="sighting-detail">
-                                <div>
-                                    <h3 class="name">Date: {{sighting.StartDateTime}}</h3>
-                                    <h3>Location: {{sighting.PlaceName}}, {{sighting.Region}}</h3>
-                                    <h3>Lat/Long: N {{sighting.LocLat}} W {{sighting.LocLong}}</h3>
-                                    <h3>Sighted By: {{sighting.Name}}</h3>
-                                </div>
-                            </div>
-
-                        </div>
-                    </section>
-
-                </div>
 
 
                 <!-- Slideshow container -->
@@ -135,6 +116,26 @@
                         <span v-for="(image, index) in manta.images" v-bind:key="image._photoID" class="dot"
                             v-on:click="currentSlide(index+1)"></span>
                     </div>
+                </div>
+
+
+                <div v-if="sightings && sightings.length > 0">
+                    <h2>{{sightings.length}} Recent Sightings since {{sightingsDate}}</h2>
+
+                    <section class="grid sightings">
+                        <div class="sighting" v-for="sighting in sightings" v-bind:key="sighting._excursionID">
+                            <div class="sighting-detail">
+                                <div>
+                                    <h3 class="name">Date: {{sighting.StartDateTime}}</h3>
+                                    <h3>Location: {{sighting.PlaceName}}, {{sighting.Region}}</h3>
+                                    <h3>Lat/Long: N {{sighting.LocLat}} W {{sighting.LocLong}}</h3>
+                                    <h3>Sighted By: {{sighting.Name}}</h3>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+
                 </div>
 
 
