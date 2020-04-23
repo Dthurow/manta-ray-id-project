@@ -131,11 +131,18 @@
                                     <h3>Lat/Long: N {{sighting.LocLat}} W {{sighting.LocLong}}</h3>
                                     <h3>Sighted By: {{sighting.Name}}</h3>
                                 </div>
+                                <div class="sightingImageDiv" v-if="sighting.PhotoAvail == '1'">
+                                    <img src="images/camera.svg">
+                                    <p>Photo taken</p>
+                                </div>
                             </div>
 
                         </div>
                     </section>
 
+                </div>
+                <div v-else>
+                    <h2>No Recent Sightings</h2>
                 </div>
 
 

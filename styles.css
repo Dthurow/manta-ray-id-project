@@ -516,7 +516,7 @@ nav a h3 {
   transition: background-color 0.6s ease;
 }
 
-.active,
+span.active,
 .dot:hover {
   background-color: #717171;
 }
@@ -574,6 +574,22 @@ nav a h3 {
   border-radius: 6px;
   padding: 10px;
 }
+.sighting-detail div{
+  display:inline-block;
+}
+
+.sightingImageDiv{
+  float:right;
+  margin-right:20px;
+}
+.sightingImageDiv img{
+
+  width:50px;
+  height:50px;
+  display:block;
+  margin:auto;
+}
+
 
 /* width */
 ::-webkit-scrollbar {
