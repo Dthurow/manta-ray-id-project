@@ -85,8 +85,8 @@ var app = new Vue({
                         console.log(data.data);
                         //valid response, sort by start date, most recent first
                         this.sightings = data.data.sort(function(a,b){
-                            return (a.StartDateTime - b.StartDateTime);
-                          }).reverse();
+                            return new Date(b.StartDateTime) - new Date(a.StartDateTime);
+                          });
                     }
 
                 })
