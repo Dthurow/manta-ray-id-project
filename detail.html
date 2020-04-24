@@ -15,7 +15,9 @@
         <nav>
             <div class="container-lg">
                 <div class="logo">
-                    <img src="images/logo-manta-ray.png" alt="">
+                    <a href="https://www.mantapacific.org/">
+                        <img src="images/logo-manta-ray.png" alt="Manta Pacific Research Foundation Logo">
+                      </a>
                     <h2>Manta Ray Identification Project</h2>
                 </div>
                 <div class="nav-options">
@@ -38,10 +40,15 @@
                 <img src="images/logo-manta-ray.png" alt="Manta Pacific Research Foundation Logo"
                     class="image-responsive">
 
-                <div class="detail-window-body" style="margin-top:10px;">
+                <div class="detail-window-body about-body" style="margin-top:10px;">
+                    <h2>About the Manta Ray<br> 
+                        Identification Project</h2>
+                    <br/>
                     <p>
-                        The manta identification project started in 1991 by Keller Laros, founder of Manta Pacific
-                        Research Foundation.
+                        The manta identification project started in 1991 by Keller Laros, founder of 
+                        <a href="https://www.mantapacific.org/">
+                            Manta Pacific Research Foundation.
+                          </a>
                         Each manta ray has a unique spot pattern on its ventral side. These spot patterns can be used to
                         accurately identify individuals.
                         The first manta ray ever identified was Lefty.
@@ -50,15 +57,26 @@
                         that is unique to her. Manta Pacfic Research Foundation maintains an ID Catalog of mantas in
                         Kona and Hawaii.
                     </p>
+                    <br/>
+                    <br/>
+                    <h3>Website Created By:</h3>
+                    <p><a href="https://daniellethurow.com">Danielle Thurow</a>
+                    </p>
+                    <p>Janice McLaughlin &amp; Kacie Guthrie 
+                    </p>
                 </div>
             </div>
 
         </div>
 
-        <div id="sighting" class="modal">
-            <div class="detail-window">
-                <img src="images/logo-manta-ray.png" alt="">
-                <h1 style="color: var(--color-background)">Form for reporting a sighting</h1>
+        <div id="sighting" class="modal" style="background-color:var(--color-background)">
+            <div class="detail-window" style="text-align: center;">
+                <img src="images/logo-manta-ray.png" alt="Manta Pacific Research Foundation Logo">
+                <h1>Report a sighting</h1>
+                <br/>
+                <p>
+                    This functionality is under development.
+                </p>
             </div>
         </div>
 
@@ -97,7 +115,7 @@
                         <div v-for="(image, index) in manta.images" v-bind:key="image._photoID" class="mySlides fade">
                             <div class="numbertext">{{index + 1}} / {{manta.images.length}}</div>
                             <a v-bind:href="imageSrc + image.Path" target="_blank">
-                                <img v-on:load="showSlides(1)" class="image-responsive"
+                                <img alt="Manta ray sighting picture" v-on:load="showSlides(1)" class="image-responsive"
                                     v-bind:src="imageSrc + image.Path">
                             </a>
 
@@ -118,31 +136,35 @@
                     </div>
                 </div>
 
+                <div v-if="sightings">
+                    <div v-if="sightings.length > 0">
+                        <h2>{{sightings.length}} Recent Sightings since {{sightingsDate}}</h2>
 
-                <div v-if="sightings && sightings.length > 0">
-                    <h2>{{sightings.length}} Recent Sightings since {{sightingsDate}}</h2>
+                        <section class="grid sightings">
+                            <div class="sighting" v-for="sighting in sightings" v-bind:key="sighting._excursionID">
+                                <div class="sighting-detail">
+                                    <div>
+                                        <h3 class="name">Date: {{sighting.StartDateTime}}</h3>
+                                        <h3>Location: {{sighting.PlaceName}}, {{sighting.Region}}</h3>
+                                        <h3>Lat/Long: N {{sighting.LocLat}} W {{sighting.LocLong}}</h3>
+                                        <h3>Sighted By: {{sighting.Name}}</h3>
+                                    </div>
+                                    <div class="sightingImageDiv" v-if="sighting.PhotoAvail == '1'">
+                                        <img src="images/camera.svg" alt="camera">
+                                        <p>Photo taken</p>
+                                    </div>
+                                </div>
 
-                    <section class="grid sightings">
-                        <div class="sighting" v-for="sighting in sightings" v-bind:key="sighting._excursionID">
-                            <div class="sighting-detail">
-                                <div>
-                                    <h3 class="name">Date: {{sighting.StartDateTime}}</h3>
-                                    <h3>Location: {{sighting.PlaceName}}, {{sighting.Region}}</h3>
-                                    <h3>Lat/Long: N {{sighting.LocLat}} W {{sighting.LocLong}}</h3>
-                                    <h3>Sighted By: {{sighting.Name}}</h3>
-                                </div>
-                                <div class="sightingImageDiv" v-if="sighting.PhotoAvail == '1'">
-                                    <img src="images/camera.svg">
-                                    <p>Photo taken</p>
-                                </div>
                             </div>
+                        </section>
 
-                        </div>
-                    </section>
-
+                    </div>
+                    <div v-else>
+                        <h2>No Recent Sightings since {{sightingsDate}}</h2>
+                    </div>
                 </div>
-                <div v-else>
-                    <h2>No Recent Sightings</h2>
+                <div v-else class="sightingsButtonDiv">
+                    <button class="button single-button" v-on:click="GetSightings">Load Sightings</button>
                 </div>
 
 
