@@ -8,7 +8,7 @@ var app = new Vue({
         sightingsURI: "https://www.mantarays.info/mantaraysapp/vtest/sighting-server.php?m=",
         sightingsDate: "2019-01-01",
         manta: {},
-        sightings: [],
+        sightings: null,
         slideIndex: 1,
         sexDict: {
             "F": "Female",
@@ -56,7 +56,6 @@ var app = new Vue({
         {
             let params = new URLSearchParams(document.location.search.substring(1));
             let id = params.get("id");
-            console.log(id);
 
             //fetch manta details
             fetch(this.uri + id)
@@ -68,29 +67,14 @@ var app = new Vue({
                         console.log(data.data[0]);
                         //valid response
                         this.manta = data.data[0];
-                        console.log(this.manta);
+                        //set title with manta name
+                        document.title = this.manta.Name + " - Manta Ray ID Project";
                         this.GetImagePath(this.manta);
                     }
 
                 })
                 .catch(error => console.error("Unable to get manta rays.", error));
-            
-                //fetch manta sightings info
-                fetch(this.sightingsURI + id + "&d=" + this.sightingsDate)
-                .then(response => response.json())
-                .then(data =>
-                {
-                    if (data.errors.code === "0")
-                    {
-                        console.log(data.data);
-                        //valid response, sort by start date, most recent first
-                        this.sightings = data.data.sort(function(a,b){
-                            return (a.StartDateTime - b.StartDateTime);
-                          }).reverse();
-                    }
 
-                })
-                .catch(error => console.error("Unable to get manta rays.", error));
 
         },
         GetImagePath: function (mantaray)
@@ -111,6 +95,27 @@ var app = new Vue({
                 .catch(error => console.error("Unable to get manta rays.", error));
 
 
+        },
+        GetSightings: function()
+        {
+            let params = new URLSearchParams(document.location.search.substring(1));
+            let id = params.get("id");
+          //fetch manta sightings info
+          fetch(this.sightingsURI + id + "&d=" + this.sightingsDate)
+          .then(response => response.json())
+          .then(data =>
+          {
+              if (data.errors.code === "0")
+              {
+                  console.log(data.data);
+                  //valid response, sort by start date, most recent first
+                  //API always responds ascending, so reverse
+                  this.sightings = data.data.reverse();
+              }
+
+          })
+          .catch(error => console.error("Unable to get manta rays.", error));
+            
         },
         plusSlides: function (n)
         {

@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" </meta> 
+  <meta name="viewport" content="width=device-width, initial-scale=1" </meta>
   <title>Manta Ray ID Project</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,400,600" rel="stylesheet">
@@ -14,7 +14,9 @@
     <nav>
       <div class="container-lg">
         <div class="logo">
-          <img src="images/logo-manta-ray.png" alt="">
+          <a href="https://www.mantapacific.org/">
+            <img src="images/logo-manta-ray.png" alt="Manta Pacific Research Foundation Logo">
+          </a>
           <h2>Manta Ray Identification Project</h2>
         </div>
         <div class="nav-options">
@@ -34,44 +36,66 @@
 
     <div id="about" class="modal" style="background-color:var(--color-background)">
       <div class="detail-window">
-        <img src="images/logo-manta-ray.png" alt="Manta Pacific Research Foundation Logo" class="image-responsive">
-        
-        <div class="detail-window-body" style="margin-top:10px;">
-          <p>
-         The manta identification project started in 1991 by Keller Laros, founder of Manta Pacific Research Foundation. 
-         Each manta ray has a unique spot pattern on its ventral side.  These spot patterns can be used to accurately identify individuals.
-         The first manta ray ever identified was Lefty.  
-         She has a broken left cepahlic fin so she is easy to differentiate from the others, but Lefty also has a spot pattern on her abdomen 
-         that is unique to her.   Manta Pacfic Research Foundation maintains an ID Catalog of mantas in Kona and Hawaii.
-         </p>
-        </div>
-     </div>
-     
-   </div>
+          <img src="images/logo-manta-ray.png" alt="Manta Pacific Research Foundation Logo"
+              class="image-responsive">
 
-    <div id="sighting" class="modal">
-      <div class="detail-window">
-        <img src="images/logo-manta-ray.png" alt="">
-        <h1 style="color: var(--color-background)">Form for reporting a sighting</h1>
+          <div class="detail-window-body about-body" style="margin-top:10px;">
+              <h2>About the Manta Ray<br> 
+                  Identification Project</h2>
+              <br/>
+              <p>
+                  The manta identification project started in 1991 by Keller Laros, founder of <a href="https://www.mantapacific.org/">
+                      Manta Pacific Research Foundation.
+                    </a>
+                  Each manta ray has a unique spot pattern on its ventral side. These spot patterns can be used to
+                  accurately identify individuals.
+                  The first manta ray ever identified was Lefty.
+                  She has a broken left cepahlic fin so she is easy to differentiate from the others, but Lefty
+                  also has a spot pattern on her abdomen
+                  that is unique to her. Manta Pacfic Research Foundation maintains an ID Catalog of mantas in
+                  Kona and Hawaii.
+              </p>
+              <br/>
+              <br/>
+              <h3>Website Created By:</h3>
+              <p><a href="https://daniellethurow.com">Danielle Thurow</a>
+              </p>
+              <p>Janice McLaughlin &amp; Kacie Guthrie 
+              </p>
+          </div>
+      </div>
+
+  </div>
+
+    <div id="sighting" class="modal" style="background-color:var(--color-background)">
+      <div class="detail-window" style="text-align: center;">
+        <img src="images/logo-manta-ray.png" alt="Manta Pacific Research Foundation Logo">
+        <h1>Report a sighting</h1>
+        <br />
+        <p>
+          This functionality is under development.
+        </p>
       </div>
     </div>
-    
+
 
     <div id="app">
 
-  
+
       <div class="title-bar">
         <div class="container-lg">
           <h1>Kona Population</h1>
           <div class="search-field">
-            <input type="text" class="quicksearch" v-model="searchTerm" v-on:keydown.enter="FilterByName()" placeholder="Search" />
+            <input type="text" class="quicksearch" v-model="searchTerm" v-on:keydown.enter="FilterByName()"
+              placeholder="Search" />
             <button class="button single-button" v-on:click="FilterByName()">Go</button>
-         </div>
+          </div>
         </div>
       </div>
-    
-          <!--in-depth pop up-->
-      <div v-if="mantaDetail != null" id="element-item-detail" class="modal" style="background-color:var(--color-background)">
+
+      <!--in-depth pop up-->
+      <div v-if="mantaDetail != null" id="element-item-detail" class="modal"
+        style="background-color:var(--color-background)">
         <div class="detail-window">
           <div class="detail-window-header">
             <h1>{{mantaDetail.Name}}</h1>
@@ -86,16 +110,16 @@
               <p>ID Number: {{mantaDetail.MPRFWebsiteNumber}}</p>
               <p>First Sighting: {{mantaDetail.DateAdded}}</p>
             </div>
-            <p>Comments:<br/>
+            <p>Comments:<br />
               {{mantaDetail.Comments}}</p>
           </div>
           <div class="image-tag">
-            <a class="button single-button" v-bind:href="'detail.html?id=' + mantaDetail._mantaID">View Details</a>          
-  
+            <a class="button single-button" v-bind:href="'detail.html?id=' + mantaDetail._mantaID">View Details</a>
+
           </div>
-          <img v-bind:src="mantaDetail.ImagePath" alt="" class="image-responsive">
-        </br>
-        
+          <img v-bind:src="mantaDetail.ImagePath" alt="Manta ray sighting picture" class="image-responsive">
+          </br>
+
 
         </div>
       </div>
@@ -118,7 +142,7 @@
               <p>Sex</p>
               <div class="button-group js-radio-button-group" data-filter-group="sex">
                 <button class="button is-checked" v-on:click="FilterBySex('')">Any</button>
-                <button class="button" v-on:click="FilterBySex('M')" >Male</button>
+                <button class="button" v-on:click="FilterBySex('M')">Male</button>
                 <button class="button" v-on:click="FilterBySex('F')">Female</button>
               </div>
             </div>
@@ -146,12 +170,11 @@
 
 
       <section class="grid thumbnails">
-        <div v-for="mantaray in mantarays" v-bind:key="mantaray._mantaID"
-          v-bind:class="GetGridItemClasses(mantaray)"
-          >
+        <div v-for="mantaray in mantarays" v-bind:key="mantaray._mantaID" v-bind:class="GetGridItemClasses(mantaray)">
           <a href="#element-item-detail" rel="modal:open" v-on:click="SetDetail(mantaray)">
             <div class="thumb-image">
-              <img v-bind:src="mantaray.ImagePath == null ? 'images/loading_symbol.gif' : mantaray.ImagePath" alt="" class="portrait">
+              <img v-bind:src="mantaray.ImagePath == null ? 'images/loading_symbol.gif' : mantaray.ImagePath" alt="Manta ray sighting picture"
+                class="portrait">
             </div>
             <div class="thumb-detail">
               <div>
@@ -166,14 +189,14 @@
 
         </div>
       </section>
-  
-  
+
+
     </div>
 
-    
+
   </div>
 
-  
+
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

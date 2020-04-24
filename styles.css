@@ -555,8 +555,8 @@ span.active,
   max-height: 750px;
   overflow-y: auto;
   overflow-x: hidden;
-  padding:5px;
-  margin-bottom:30px;
+  padding: 5px;
+  margin-bottom: 30px;
 }
 
 .sighting {
@@ -568,28 +568,31 @@ span.active,
   margin-right: auto;
   margin-bottom: 10px;
 }
-.sighting-detail{
+.sighting-detail {
   background-color: var(--color-trans);
-  margin-right:15px;
+  margin-right: 15px;
   border-radius: 6px;
   padding: 10px;
 }
-.sighting-detail div{
-  display:inline-block;
+.sighting-detail div {
+  display: inline-block;
 }
 
-.sightingImageDiv{
-  float:right;
-  margin-right:20px;
+.sightingImageDiv {
+  float: right;
+  margin-right: 20px;
 }
-.sightingImageDiv img{
-
-  width:50px;
-  height:50px;
-  display:block;
-  margin:auto;
+.sightingImageDiv img {
+  width: 50px;
+  height: 50px;
+  display: block;
+  margin: auto;
 }
 
+.sightingsButtonDiv {
+  text-align: center;
+  margin-top: 20px;
+}
 
 /* width */
 ::-webkit-scrollbar {
@@ -613,4 +616,11 @@ span.active,
   background: var(--color-background);
   border-radius: 10px;
   box-shadow: inset 0 0 5px grey;
+}
+
+.about-body{
+  text-align:center;
+}
+.about-body h3{
+  font-size:1.5rem;
 }
