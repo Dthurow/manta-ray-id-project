@@ -130,7 +130,7 @@ table {
 
 a {
   text-decoration: none;
-  color: inherit;
+  color: var(--color-contrast);
 }
 
 /* End reset */

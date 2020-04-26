@@ -79,7 +79,7 @@ var app = new Vue({
         },
         GetImagePath: function (mantaray)
         {
-            fetch(this.imageURI + mantaray._mantaID)
+            fetch(this.imageURI + mantaray._mantaID, {cache: "no-store"})
                 .then(response => response.json())
                 .then(data =>
                 {
@@ -100,22 +100,21 @@ var app = new Vue({
         {
             let params = new URLSearchParams(document.location.search.substring(1));
             let id = params.get("id");
-          //fetch manta sightings info
-          fetch(this.sightingsURI + id + "&d=" + this.sightingsDate)
-          .then(response => response.json())
-          .then(data =>
-          {
-              if (data.errors.code === "0")
-              {
-                  console.log(data.data);
-                  //valid response, sort by start date, most recent first
-                  //API always responds ascending, so reverse
-                  this.sightings = data.data.reverse();
-              }
+            //fetch manta sightings info
+            fetch(this.sightingsURI + id + "&d=" + this.sightingsDate, {cache: "no-store"})
+                .then(response => response.json())
+                .then(data =>
+                {
+                     if (data.errors.code === "0")
+                     {
+                          console.log(data.data);
+                          //valid response, sort by start date, most recent first
+                          //API always responds ascending, so reverse
+                          this.sightings = data.data.reverse();
+                     }
+                 })
+            .catch(error => console.error("Unable to get manta rays.", error));
 
-          })
-          .catch(error => console.error("Unable to get manta rays.", error));
-            
         },
         plusSlides: function (n)
         {
