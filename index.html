@@ -100,8 +100,8 @@
               <p>Species</p>
               <div class="button-group js-radio-button-group" data-filter-group="species">
                 <button class="button is-checked" v-on:click="FilterBySpecies('')">Any</button>
-                <button class="button" v-on:click="FilterBySpecies('B')">birostris (pelagic)</button>
-                <button class="button" v-on:click="FilterBySpecies('A')">alfredi (reef)</button>
+                <button class="button" v-on:click="FilterBySpecies('B')">birostris</button>
+                <button class="button" v-on:click="FilterBySpecies('A')">alfredi</button>
               </div>
             </div>
             <div class="ui-group">
@@ -110,7 +110,8 @@
                 <button class="button is-checked" v-on:click="FilterBySex('')">Any</button>
                 <button class="button" v-on:click="FilterBySex('M')">Male</button>
                 <button class="button" v-on:click="FilterBySex('F')">Female</button>
-              </div>
+                <button class="button" v-on:click="FilterBySex('U')">Unknown</button>
+             </div>
             </div>
             <div class="ui-group">
               <p>Coloring</p>
