@@ -132,6 +132,9 @@ a {
   text-decoration: none;
   color: var(--color-contrast);
 }
+a:hover {
+  color: var(--color-primary);
+}
 
 /* End reset */
 
@@ -176,7 +179,7 @@ body {
 }
 
 .active {
-  color: var(--color-contrast);
+  color: var(--color-white);
 }
 
 /* desktop typography styles */
@@ -227,9 +230,12 @@ nav > * {
 }
 
 nav a h3 {
-  color: var(--color-white);
+  color: var(--color-contrast);
   padding-left: 20px;
   font-weight: 200;
+}
+nav a h3:hover {
+  color: var(--color-primary);
 }
 
 .logo {
