@@ -2,9 +2,9 @@
 var app = new Vue({
     el: '#app',
     data: {
-        uri: "https://www.mantarays.info/mantaraysapp/vtest/manta-server.php?p=2&n=0",
-        imageURI: "https://www.mantarays.info/mantaraysapp/vtest/photo-server.php?p=",
-        imageSrc: "https://www.mantarays.info/mantaraysapp/vtest/image-server.php?w=250&f=MantaDatabaseImages/",
+        uri: "https://www.mantarays.info/mantaraysapp/v1/manta-server.php?p=2&n=0",
+        imageURI: "https://www.mantarays.info/mantaraysapp/v1/photo-server.php?p=",
+        imageSrc: "https://www.mantarays.info/mantaraysapp/v1/image-server.php?w=250&f=MantaDatabaseImages/",
         allMantarays: [],
         mantarays: [],
         searchTerm: null,
