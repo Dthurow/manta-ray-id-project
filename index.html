@@ -26,46 +26,12 @@
           <a href="#">
             <h3 class="active"> Catalog</h3>
           </a>
-          <a href="#about" rel="modal:open">
+          <a href="about.html">
             <h3>About</h3>
           </a>
         </div>
       </div>
     </nav>
-
-
-    <div id="about" class="modal" style="background-color:var(--color-background)">
-      <div class="detail-window">
-          <img src="images/logo-manta-ray.png" alt="Manta Pacific Research Foundation Logo"
-              class="image-responsive">
-
-          <div class="detail-window-body about-body" style="margin-top:10px;">
-              <h2>About the Manta Ray<br> 
-                  Identification Project</h2>
-              <br/>
-              <p>
-                  The manta identification project started in 1991 by Keller Laros, founder of <a href="https://www.mantapacific.org/">
-                      Manta Pacific Research Foundation.
-                    </a>
-                  Each manta ray has a unique spot pattern on its ventral side. These spot patterns can be used to
-                  accurately identify individuals.
-                  The first manta ray ever identified was Lefty.
-                  She has a broken left cepahlic fin so she is easy to differentiate from the others, but Lefty
-                  also has a spot pattern on her abdomen
-                  that is unique to her. Manta Pacfic Research Foundation maintains an ID Catalog of mantas in
-                  Kona and Hawaii.
-              </p>
-              <br/>
-              <br/>
-              <h3>Website Created By:</h3>
-              <p><a href="https://daniellethurow.com">Danielle Thurow</a>
-              </p>
-              <p>Janice McLaughlin &amp; Kacie Guthrie 
-              </p>
-          </div>
-      </div>
-
-  </div>
 
     <div id="sighting" class="modal" style="background-color:var(--color-background)">
       <div class="detail-window" style="text-align: center;">
@@ -134,8 +100,8 @@
               <p>Species</p>
               <div class="button-group js-radio-button-group" data-filter-group="species">
                 <button class="button is-checked" v-on:click="FilterBySpecies('')">Any</button>
-                <button class="button" v-on:click="FilterBySpecies('B')">birostris (pelagic)</button>
-                <button class="button" v-on:click="FilterBySpecies('A')">alfredi (reef)</button>
+                <button class="button" v-on:click="FilterBySpecies('B')">birostris</button>
+                <button class="button" v-on:click="FilterBySpecies('A')">alfredi</button>
               </div>
             </div>
             <div class="ui-group">
@@ -144,7 +110,8 @@
                 <button class="button is-checked" v-on:click="FilterBySex('')">Any</button>
                 <button class="button" v-on:click="FilterBySex('M')">Male</button>
                 <button class="button" v-on:click="FilterBySex('F')">Female</button>
-              </div>
+                <button class="button" v-on:click="FilterBySex('U')">Unknown</button>
+             </div>
             </div>
             <div class="ui-group">
               <p>Coloring</p>
