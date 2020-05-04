@@ -554,9 +554,7 @@ span.active,
 }
 
 .sightings {
-  display: grid;
   max-width: 1120px;
-  grid-template-columns: repeat(auto-fit, 1100px);
   margin: 10px auto;
   max-height: 750px;
   overflow-y: auto;
@@ -566,10 +564,7 @@ span.active,
 }
 
 .sighting {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 95%;
+  width: 101%;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10px;
